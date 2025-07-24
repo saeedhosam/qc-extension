@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QC Checklist</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>QC Checklist</h1>
+            <button id="reset-btn" title="Reset all checklists">Reset</button>
+        </div>
+
+        <div class="tab-switcher">
+            <button class="tab-btn active" data-target="issuance">Issuance</button>
+            <button class="tab-btn" data-target="exchange">Exchange</button>
+            <button class="tab-btn" data-target="refund">Refund</button>
+        </div>
+
+        <div class="content-container">
+            <div id="issuance" class="category active">
+                <ul class="checklist">
+                    <li>
+                        <input type="checkbox" id="iss-1"><label for="iss-1">Passenger Name & Title</label>
+                        <div class="tooltip">?
+                            <span class="tooltip-text">Verify name matches passport/ID and title (MR/MRS/MS) is correct.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="iss-2"><label for="iss-2">Flight Segments & Dates</label>
+                        <div class="tooltip">?
+                            <span class="tooltip-text">Confirm all flight segments, dates, and times match the booking request.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="iss-3"><label for="iss-3">Fare Basis & Rules</label>
+                        <div class="tooltip">?
+                            <span class="tooltip-text">Ensure the correct fare basis is used and ticket rules are noted.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="iss-4"><label for="iss-4">Taxes & Fees</label>
+                        <div class="tooltip">?
+                            <span class="tooltip-text">Check that all applicable taxes and carrier-imposed fees are correct.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="iss-5"><label for="iss-5">Form of Payment (FOP)</label>
+                        <div class="tooltip">?
+                            <span class="tooltip-text">Verify the FOP is correct (e.g., credit card last 4 digits, cash, invoice).</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="exchange" class="category">
+                <ul class="checklist">
+                    <li>
+                        <input type="checkbox" id="ex-1"><label for="ex-1">Original Ticket Number</label>
+                        <div class="tooltip">?
+                            <span class="tooltip-text">Ensure the original ticket is cross-referenced in the endorsement box.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ex-2"><label for="ex-2">Change Fee Collected</label>
+                        <div class="tooltip">?
+                            <span class="tooltip-text">Verify the correct change fee was applied and collected, if applicable.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ex-3"><label for="ex-3">Fare Difference (Add-Collect)</label>
+                        <div class="tooltip">?
+                            <span class="tooltip-text">Confirm any fare difference has been accurately calculated and collected/refunded.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ex-4"><label for="ex-4">New Fare Calculation</label>
+                        <div class="tooltip">?
+                            <span class="tooltip-text">Check the fare construction line to ensure it is accurate for the new itinerary.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ex-5"><label for="ex-5">Endorsements Updated</label>
+                        <div class="tooltip">?
+                            <span class="tooltip-text">Update the endorsement box with any new restrictions (e.g., NON-REF/CHG FEE).</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="refund" class="category">
+                <ul class="checklist">
+                    <li>
+                        <input type="checkbox" id="ref-1"><label for="ref-1">Refund Application Processed</label>
+                        <div class="tooltip">?
+                            <span class="tooltip-text">Confirm the refund has been processed in the GDS or via the airline's portal.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ref-2"><label for="ref-2">Cancellation Fee Applied</label>
+                        <div class="tooltip">?
+                            <span class="tooltip-text">Ensure the correct cancellation penalty was deducted from the refund amount.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ref-3"><label for="ref-3">Non-Refundable Taxes</label>
+                        <div class="tooltip">?
+                            <span class="tooltip-text">Verify that any non-refundable taxes have been correctly handled.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ref-4"><label for="ref-4">Refund Amount Correct</label>
+                        <div class="tooltip">?
+                            <span class="tooltip-text">Double-check the final refund amount against fare rules and calculations.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ref-5"><label for="ref-5">Refund to Original FOP</label>
+                        <div class="tooltip">?
+                            <span class="tooltip-text">Confirm the refund was sent back to the original form of payment.</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
