@@ -11,43 +11,87 @@
             <button id="reset-btn" title="Reset all checklists">Reset</button>
         </div>
 
-        <div class="tab-switcher">
-            <button class="tab-btn active" data-target="issuance">Issuance</button>
-            <button class="tab-btn" data-target="exchange">Exchange</button>
-            <button class="tab-btn" data-target="refund">Refund</button>
+        <div class="switcher-container">
+            <select id="category-switcher">
+                <option value="issuance" selected>Issuance</option>
+                <option value="exchange">Exchange</option>
+                <option value="refund">Refund</option>
+            </select>
         </div>
 
         <div class="content-container">
             <div id="issuance" class="category active">
                 <ul class="checklist">
                     <li>
-                        <input type="checkbox" id="iss-1"><label for="iss-1">Passenger Name & Title</label>
+                        <input type="checkbox" id="iss-1"><label for="iss-1">Office & Mondee PCC</label>
                         <div class="tooltip">?
-                            <span class="tooltip-text">Verify name matches passport/ID and title (MR/MRS/MS) is correct.</span>
+                            <span class="tooltip-text">Make sure that the booking was created in a Mondee PCC, if not, then you must check if the airline allows another PCC other than Mondee's.</span>
                         </div>
                     </li>
                     <li>
-                        <input type="checkbox" id="iss-2"><label for="iss-2">Flight Segments & Dates</label>
+                        <input type="checkbox" id="iss-2"><label for="iss-2">Passenger Names & Types</label>
                         <div class="tooltip">?
-                            <span class="tooltip-text">Confirm all flight segments, dates, and times match the booking request.</span>
+                            <span class="tooltip-text">Confirm that types are written correctly, especially for LHG tickets. For example, it should be *CHD*23JUL19 for CHD type on Sabre.</span>
                         </div>
                     </li>
                     <li>
-                        <input type="checkbox" id="iss-3"><label for="iss-3">Fare Basis & Rules</label>
+                        <input type="checkbox" id="iss-3"><label for="iss-3">Flight Segments & Dates</label>
                         <div class="tooltip">?
-                            <span class="tooltip-text">Ensure the correct fare basis is used and ticket rules are noted.</span>
+                            <span class="tooltip-text">Check the dates and the codeshare flights and which airline should be the validating carrier (over the world).</span>
                         </div>
                     </li>
                     <li>
-                        <input type="checkbox" id="iss-4"><label for="iss-4">Taxes & Fees</label>
+                        <input type="checkbox" id="iss-4"><label for="iss-4">Fare & Pricing</label>
                         <div class="tooltip">?
-                            <span class="tooltip-text">Check that all applicable taxes and carrier-imposed fees are correct.</span>
+                            <span class="tooltip-text">Check if there's a difference between *COM and normal pricing. Also, verify the accuracy of the pricing and whether it's what the agent has asked for.</span>
                         </div>
                     </li>
                     <li>
-                        <input type="checkbox" id="iss-5"><label for="iss-5">Form of Payment (FOP)</label>
+                        <input type="checkbox" id="iss-5"><label for="iss-5">Commission</label>
                         <div class="tooltip">?
-                            <span class="tooltip-text">Verify the FOP is correct (e.g., credit card last 4 digits, cash, invoice).</span>
+                            <span class="tooltip-text">Make sure you know what's the right plus-up/COMM/TC/TD because you'll need it later when QCing the ticket.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="iss-5"><label for="iss-5">CTCE/CTCM and DOCs</label>
+                        <div class="tooltip">?
+                            <span class="tooltip-text">Confirm that CTCE/CTCM and DOCs exist, especially for airlines that require so like SV and TK.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="iss-5"><label for="iss-5">DK/Customer Number</label>
+                        <div class="tooltip">?
+                            <span class="tooltip-text">Make sure that DK/Customer Number exists on the booking.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="iss-5"><label for="iss-5">Ticket's Coupons</label>
+                        <div class="tooltip">?
+                            <span class="tooltip-text">Make sure that ticket's coupons reflect the booking's segments.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="iss-5"><label for="iss-5">Coupons Bag Pieces</label>
+                        <div class="tooltip">?
+                            <span class="tooltip-text">Confirm the number of bag pieces on each coupon and whether it meets the agent's request.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="iss-5"><label for="iss-5">Ticket's Fare</label>
+                        <div class="tooltip">?
+                            <span class="tooltip-text">Confirm the ticket has the correct base fare and total value (in one case, a plus-up was added but it just didn't reflect as COMM on Amadeus).</span>
+                        </div>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="iss-5"><label for="iss-5">Ticket's plus-up/COMM/TC/TD</label>
+                        <div class="tooltip">?
+                            <span class="tooltip-text">Confirm that the correct plus-up/COMM/TC/TD is reflecting on the ticket.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="iss-5"><label for="iss-5">Ticket's FOP</label>
+                        <div class="tooltip">?
+                            <span class="tooltip-text">Confirm that the correct FOP is used on the ticket as well. Check if it's CASH or with CC, and if it's CASH, is it allowed? (for the airline or the agent).</span>
                         </div>
                     </li>
                 </ul>
