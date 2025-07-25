@@ -48,4 +48,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // --- Click anywhere in list item to toggle checkbox ---
+    const allListItems = document.querySelectorAll('.checklist li');
+    allListItems.forEach(listItem => {
+        listItem.addEventListener('click', (event) => {
+            // Don't trigger if clicking on the tooltip
+            if (event.target.closest('.tooltip')) {
+                return;
+            }
+            
+            // Find the checkbox in this list item
+            const checkbox = listItem.querySelector('input[type="checkbox"]');
+            if (checkbox) {
+                // Toggle the checkbox
+                checkbox.checked = !checkbox.checked;
+                // Trigger the change event to update styling
+                checkbox.dispatchEvent(new Event('change'));
+            }
+        });
+    });
 });

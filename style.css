@@ -78,6 +78,11 @@ h1 {
     border-radius: 3px;
     margin-bottom: 6px;
     box-shadow: 0 1px 1px rgba(9, 30, 66, 0.08);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 .checklist input[type="checkbox"] {
