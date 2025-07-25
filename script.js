@@ -58,6 +58,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             
+            // Don't trigger if clicking directly on the checkbox or label (let them handle it naturally)
+            if (event.target.type === 'checkbox' || event.target.tagName === 'LABEL') {
+                return;
+            }
+            
             // Find the checkbox in this list item
             const checkbox = listItem.querySelector('input[type="checkbox"]');
             if (checkbox) {
