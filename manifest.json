@@ -17,7 +17,7 @@
     "service_worker": "background.js"
   },
   "side_panel": {
-    "default_path": "sidebar.html"
+    "default_path": "popup.html"
   },
   "icons": {
     "16": "icon.png",
