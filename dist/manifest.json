@@ -1,27 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "QC - Airline Ticketing Quality Check",
-  "version": "1.0",
-  "description": "A simple sidebar checklist for quality checking airline ticketing tasks.",
-  "permissions": [
-    "sidePanel"
-  ],
+  "name": "React Chrome Extension",
+  "version": "1.0.0",
+  "description": "A simple React app as a Chrome extension",
   "action": {
-    "default_title": "Open QC Checklist",
-    "default_icon": {
-      "16": "icon.png",
-      "48": "icon.png"
-    }
+    "default_popup": "index.html"
   },
-  "background": {
-    "service_worker": "background.js"
-  },
-  "side_panel": {
-    "default_path": "sidebar.html"
-  },
-  "icons": {
-    "16": "icon.png",
-    "48": "icon.png",
-    "128": "icon.png"
-  }
+  "permissions": []
 }
