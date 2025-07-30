@@ -6,8 +6,8 @@
   "action": {
     "default_title": "Open QC Checklist",
     "default_icon": {
-      "16": "vite.svg",
-      "48": "vite.svg"
+      "16": "icon.png",
+      "48": "icon.png"
     }
   },
   "background": {
