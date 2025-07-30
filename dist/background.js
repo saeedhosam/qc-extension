@@ -1,13 +1,13 @@
-const panelState = {};
+const panelOpenState = {};
 
 chrome.action.onClicked.addListener((tab) => {
-  const winId = tab.windowId;
+  const windowId = tab.windowId;
 
-  if (panelState[winId]) {
-    chrome.sidePanel.close({ windowId: winId });
-    panelState[winId] = false;
+  if (panelOpenState[windowId]) {
+    chrome.sidePanel.close({ windowId });
+    panelOpenState[windowId] = false;
   } else {
-    chrome.sidePanel.open({ windowId: winId });
-    panelState[winId] = true;
+    chrome.sidePanel.open({ windowId });
+    panelOpenState[windowId] = true;
   }
 });
