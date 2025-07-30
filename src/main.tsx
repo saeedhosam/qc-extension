@@ -1,9 +1,10 @@
 import { createRoot } from "react-dom/client";
-import "@material/web/checkbox/checkbox.js";
 import "./index.css";
+import Item from "./components/Item";
 
+// Now, we just tell React to render our complete component
 createRoot(document.getElementById("root")!).render(
-  <div className="border">
-    <md-checkbox label="Accept Terms"></md-checkbox>
-  </div>,
+  <div>
+    <Item />
+  </div>
 );
