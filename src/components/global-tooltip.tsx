@@ -15,7 +15,7 @@ const GlobalTooltip = ({ text, isVisible, onClose }) => {
         className="relative max-w-sm p-6 bg-white rounded-lg shadow-xl text-center"
         onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the tooltip
       >
-        <p className="text-gray-700">{text}</p>
+        <p className="text-gray-700 select-none">{text}</p>
       </div>
     </div>
   )

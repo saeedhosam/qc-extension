@@ -12,7 +12,7 @@ export const Checkbox = ({
           ? "bg-blue-50 border-blue-200"
           : "bg-white hover:bg-gray-50 border-gray-200"
       } border`}>
-      <label className="flex items-center cursor-pointer">
+      <label className="flex items-center select-none cursor-pointer">
         <input
           type="checkbox"
           className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"

@@ -28,7 +28,7 @@ export const ExpandableCard = ({ title, items, onTooltipClick }) => {
   return (
     <div className="w-full my-2 bg-white border border-gray-200 rounded-lg shadow-sm transition-all duration-300">
       <button
-        className="w-full flex justify-between items-center p-4 cursor-pointer focus:outline-none"
+        className="w-full flex justify-between items-center p-4 select-none cursor-pointer focus:outline-none"
         onClick={() => setIsOpen(!isOpen)}>
         <div className="flex items-center">
           <span className="font-semibold text-gray-800">{title}</span>
