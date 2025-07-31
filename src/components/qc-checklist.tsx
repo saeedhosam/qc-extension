@@ -1,12 +1,12 @@
-import { ExpandableCard } from "./expandable-card";
-import qcData from "~assets/qc-data.json";
+import { ExpandableCard } from "./expandable-card"
+import qcData from "~assets/qc-data.json"
 
-const QcChecklist = ({ activeCategory, onTooltipClick }) => { // <-- New props
-  const cards = qcData[activeCategory] || [];
+const QcChecklist = ({ activeCategory, onTooltipClick }) => {
+  const cards = qcData[activeCategory] || []
 
   return (
-    <div className="flex flex-col items-center px-4 w-full">
-      <div className="w-full max-w-md">
+    <div className="w-full px-4 py-4">
+      <div className="space-y-3">
         {cards.map((card, index) => (
           <ExpandableCard
             key={index}
@@ -17,7 +17,7 @@ const QcChecklist = ({ activeCategory, onTooltipClick }) => { // <-- New props
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default QcChecklist;
+export default QcChecklist

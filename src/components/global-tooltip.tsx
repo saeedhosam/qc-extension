@@ -1,13 +1,19 @@
 const GlobalTooltip = ({ text, isVisible }) => {
   if (!isVisible || !text) {
-    return null; // Don't render anything if not visible or no text
+    return null
   }
 
   return (
-    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 w-64 text-center text-sm text-white bg-gray-700 rounded-md shadow-lg z-50 pointer-events-none">
-      {text}
+    <div
+      className={`fixed inset-0 flex items-center justify-center z-50 transition-opacity duration-300 ${
+        isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+      }`}>
+      <div className="absolute inset-0 bg-black/30"></div>
+      <div className="relative max-w-sm p-6 bg-white rounded-lg shadow-xl text-center">
+        <p className="text-gray-700">{text}</p>
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default GlobalTooltip;
+export default GlobalTooltip
