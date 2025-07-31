@@ -8,7 +8,6 @@ import "~style.css"
 function IndexSidebar() {
   const [activeTool, setActiveTool] = useState("QC")
   const [activeCategory, setActiveCategory] = useState("Issuance")
-
   const [tooltipText, setTooltipText] = useState("")
   const [isTooltipVisible, setIsTooltipVisible] = useState(false)
 
@@ -56,7 +55,7 @@ function IndexSidebar() {
           <div className="p-6">
             <h2 className="text-xl font-semibold text-gray-800">Taxes</h2>
             <p className="mt-2 text-gray-600">
-              This is where tax information will be displayed.
+              Should be the next thing. 
             </p>
           </div>
         )}
