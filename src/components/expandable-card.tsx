@@ -11,10 +11,12 @@ export const ExpandableCard = ({ title, children }) => {
         <span>{title}</span>
       </div>
       <div
-        className={`transition-all duration-100 overflow-hidden ${
-          isOpen ? "max-h-40" : "max-h-0"
+        className={`grid transition-all duration-300 ease-in-out ${
+          isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
         }`}>
-        <div className="p-2">{children}</div>
+        <div className="overflow-hidden">
+          <div className="p-2">{children}</div>
+        </div>
       </div>
     </div>
   )
