@@ -30,27 +30,27 @@ export const ExpandableCard = ({ title, items, onTooltipClick }) => {
       <button
         className="w-full flex justify-between items-center p-4 select-none cursor-pointer focus:outline-none"
         onClick={() => setIsOpen(!isOpen)}>
+        <span className="font-semibold text-gray-800">{title}</span>
         <div className="flex items-center">
-          <span className="font-semibold text-gray-800">{title}</span>
-          <span className={`ml-3 ${badgeClasses}`}>
+          <span className={`${badgeClasses}`}>
             {checkedCount}/{items.length}
           </span>
+          <svg
+            className={`w-5 h-5 text-gray-500 transform transition-transform duration-200 ${
+              isOpen ? "rotate-180" : ""
+            } ml-3`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
         </div>
-        <svg
-          className={`w-5 h-5 text-gray-500 transform transition-transform duration-200 ${
-            isOpen ? "rotate-180" : ""
-          }`}
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 9l-7 7-7-7"
-          />
-        </svg>
       </button>
       <div
         ref={contentRef}

@@ -7,12 +7,15 @@ export const Checkbox = ({
 }) => {
   return (
     <div
+      onClick={() => onChange(!checked)}
       className={`flex items-center justify-between p-3 rounded-lg transition-all duration-200 ${
         checked
           ? "bg-blue-50 border-blue-200"
           : "bg-white hover:bg-gray-50 border-gray-200"
-      } border`}>
-      <label className="flex items-center select-none cursor-pointer">
+      } border cursor-pointer`}>
+      <label
+        onClick={(e) => e.stopPropagation()}
+        className="flex items-center select-none cursor-pointer">
         <input
           type="checkbox"
           className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
