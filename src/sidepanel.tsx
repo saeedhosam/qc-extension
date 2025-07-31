@@ -66,7 +66,7 @@ function IndexSidebar() {
                 Category
               </button>
               <ul
-                className={`bg-white rounded w-40 border transition-all mb-5 duration-300 overflow-hidden ${
+                className={`bg-white rounded w-40 border transition-all mb-2 duration-300 overflow-hidden ${
                   isOpen ? "max-h-40 p-2" : "max-h-0 border-0 p-0"
                 }`}>
                 <li className="p-2 text-center hover:bg-gray-100 cursor-pointer select-none">
