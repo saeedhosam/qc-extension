@@ -4,23 +4,26 @@ const CategoryTabs = ({ activeCategory, setActiveCategory }) => {
   const categories = Object.keys(qcData)
 
   return (
-    <div className="w-full px-4">
-      <div className="flex space-x-1 bg-gray-100 p-1 rounded-lg overflow-x-auto">
-        {categories.map((category) => (
-          <button
-            key={category}
-            onClick={() => setActiveCategory(category)}
-            className={`w-full text-center px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ease-in-out focus:outline-none
-              ${
-                activeCategory === category
-                  ? "bg-white text-blue-600 shadow-sm"
-                  : "text-gray-500 hover:bg-gray-200 hover:text-gray-700"
-              }
-            `}
-            style={{ flex: "0 0 auto" }}>
-            {category}
-          </button>
-        ))}
+    <div className="w-full px-4 py-2">
+      <div className="relative">
+        <select
+          value={activeCategory}
+          onChange={(e) => setActiveCategory(e.target.value)}
+          className="w-full appearance-none bg-white border border-gray-300 text-gray-700 py-2 px-3 pr-8 rounded-md leading-tight focus:outline-none focus:bg-white focus:border-blue-500 shadow-sm">
+          {categories.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
+        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+          <svg
+            className="fill-current h-4 w-4"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20">
+            <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+          </svg>
+        </div>
       </div>
     </div>
   )
