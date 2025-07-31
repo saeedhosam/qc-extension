@@ -1,0 +1,16 @@
+{
+  "name": "Open Website in Side Panel",
+  "description": "Opens a website in the side panel when clicked.",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": ["sidePanel"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_icon": "icon.png"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  }
+}
