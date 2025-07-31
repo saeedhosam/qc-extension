@@ -1,33 +1,225 @@
 {
+  "PNR Creation": [
+    {
+      "title": "General Checks",
+      "checkboxes": [
+        {
+          "text": "Coming Soon, Insha'Allah!",
+          "tooltipText": "Nothing to see here."
+        }
+      ]
+    }
+  ],
   "Issuance": [
     {
-      "title": "Issuance QC Checks",
+      "title": "Pre-Ticketing Checks",
       "checkboxes": [
-        { "text": "Is the cube fully assembled?", "tooltipText": "Check for any missing pieces or stickers." },
-        { "text": "Are all colors correctly applied?", "tooltipText": "Verify that no two adjacent faces have the same color." }
+        {
+          "text": "Office & Mondee PCC",
+          "tooltipText": "Make sure that the booking was created in a Mondee PCC, if not, then you must check if the airline allows another PCC other than Mondee's."
+        },
+        {
+          "text": "Passenger Names, Types, CTCE/CTCM and DOCs",
+          "tooltipText": "Confirm that types are written correctly, especially for LHG tickets. For example, it should be *CHD*23JUL19 for CHD type on Sabre. Make sure you know what's the right plus-up/COMM/TC/TD because you'll need it later when QCing the ticket."
+        },
+        {
+          "text": "DK/Customer Number",
+          "tooltipText": "Make sure that DK/Customer Number exists on the booking."
+        }
       ]
     },
     {
-      "title": "Packaging",
+      "title": "Flight & Fare Details",
       "checkboxes": [
-        { "text": "Is the box in good condition?", "tooltipText": "Look for dents, tears, or other damage." }
+        {
+          "text": "Flight Segments & Dates (especially for RJ)",
+          "tooltipText": "Check the dates and the codeshare flights and which airline should be the validating carrier (over the world). Also, make sure that outbound is booked before the inbound."
+        },
+        {
+          "text": "Info Left in PNR",
+          "tooltipText": "Check if the agent has left any info for the fare needed in the PNR."
+        },
+        {
+          "text": "Fare & Pricing",
+          "tooltipText": "Check if there's a difference between *COM and normal pricing. Also, verify the accuracy of the pricing and whether it's what the agent has asked for."
+        }
+      ]
+    },
+    {
+      "title": "Ticket & Payment",
+      "checkboxes": [
+        {
+          "text": "Ticket's Coupons",
+          "tooltipText": "Make sure that ticket's coupons reflect the booking's segments."
+        },
+        {
+          "text": "Coupons Bag Pieces",
+          "tooltipText": "Confirm the number of bag pieces on each coupon and whether it meets the agent's request."
+        },
+        {
+          "text": "Ticket's Fare",
+          "tooltipText": "Confirm the ticket has the correct base fare and total value (in one case, a plus-up was added but it just didn't reflect as COMM on Amadeus)."
+        },
+        {
+          "text": "Ticket's plus-up/COMM/TC/TD",
+          "tooltipText": "Re-price with the COMM entry to check the COMM amount, and then confirm that the correct plus-up/COMM/TC/TD is reflecting on the ticket. Also, the percentage of the plus-up and whether the airline accepts plus-up in the first place."
+        },
+        {
+          "text": "Form of Payment Used",
+          "tooltipText": "Confirm that the correct FOP is used on the ticket as well. Check if it's CASH or with CC, and if it's CASH, is it allowed? (for the airline or the agent)."
+        }
       ]
     }
   ],
   "Exchange": [
     {
-      "title": "Exchange Return Checks",
+      "title": "Exchange & PNR Integrity",
       "checkboxes": [
-        { "text": "Is the item in new condition?", "tooltipText": "Check for signs of use, scratches, or damage." },
-        { "text": "Is the original packaging included?", "tooltipText": "Ensure all parts and manuals are present." }
+        {
+          "text": "Office",
+          "tooltipText": "Make sure the same office from where the original ticket was issued is the same for the new ticket."
+        },
+        {
+          "text": "Segments, RBD and Class of Service",
+          "tooltipText": "Verify that the ticket holds the correct coupons. Make sure that classes are correctly assigned. For example, on TK, especially for INVOL exchanges, you're prohibited of exchanging on N & A classes."
+        },
+        {
+          "text": "Old Segments Removed",
+          "tooltipText": "Make sure that old segments are removed from the PNR."
+        },
+        {
+          "text": "Same passenger's ticket",
+          "tooltipText": "Make sure you're exchanging the original ticket of the same passenger, not other passenger's ticket."
+        }
+      ]
+    },
+    {
+      "title": "Fare & Penalty Details",
+      "checkboxes": [
+        {
+          "text": "Fare Construction Line",
+          "tooltipText": "If the ticket is partially used, make sure that outbound base fare on the old ticket matches the one on the old ticket. Also, take a look on whether the ticket has plus-up or not in the fare construction line."
+        },
+        {
+          "text": "Fare Type",
+          "tooltipText": "Make sure that original ticket's fare type is the same as the new ticket's."
+        },
+        {
+          "text": "Old & New COMM/plus-up",
+          "tooltipText": "Verify the new COMM. For example, if the ticket is PUB fare, the new ticket's COMM should be recalculated according to the new fare and percentage. One hidden mistake was with RJ's plus-up on west-bound, where the ticket looks like a normal PUB, but you have to make sure if it has plus-up."
+        },
+        {
+          "text": "COMM on Penalty",
+          "tooltipText": "Verify that the new COMM on Penalty is reflecting on the new ticket, charged the correct amount, and is sent to ARC and agent settlement."
+        },
+        {
+          "text": "Penalty & Fare Rules",
+          "tooltipText": "Make sure that penalty and the exchange is according to the fare rules."
+        },
+        {
+          "text": "Waiver",
+          "tooltipText": "Make sure that penalty is correctly reflected in the ticket in the correct place (ED or TC), and an email is sent to ARC."
+        }
+      ]
+    },
+    {
+      "title": "Validity & Timelines",
+      "checkboxes": [
+        {
+          "text": "Passenger Type",
+          "tooltipText": "Make sure that for example, a child is not gonna be an adult with the new date."
+        },
+        {
+          "text": "Advanced Purchase",
+          "tooltipText": "If the ticket is totally unused, make sure that it was pricing at the date of exchanging the new ticket."
+        },
+        {
+          "text": "Ticketing Time Limit",
+          "tooltipText": "Verify that the new ticket is issued within the ticketing time limit of the segments booked."
+        },
+        {
+          "text": "Original Ticket Date",
+          "tooltipText": "It has to be less than a year and the ticket should be valid."
+        }
+      ]
+    },
+    {
+      "title": "Miscellaneous",
+      "checkboxes": [
+        {
+          "text": "Bag Pieces",
+          "tooltipText": "Make sure that the same bag pieces from the original ticket is there or as the agent desires."
+        },
+        {
+          "text": "Form of Payment Used",
+          "tooltipText": "Confirm that the correct FOP is used on the ticket as well. Check if it's CASH or with CC, and if it's CASH, is it allowed? (for the airline or the agent)."
+        }
       ]
     }
   ],
-  "Refund": [
+  "Refund (VOL)": [
     {
-      "title": "Refund Inspection",
+      "title": "General Checks",
       "checkboxes": [
-        { "text": "Are all accessories included?", "tooltipText": "Verify all components from the original purchase." }
+        {
+          "text": "Coming Soon, Insha'Allah!",
+          "tooltipText": "Nothing to see here."
+        }
+      ]
+    }
+  ],
+  "Refund (INVOL)": [
+    {
+      "title": "General Checks",
+      "checkboxes": [
+        {
+          "text": "Coming Soon, Insha'Allah!",
+          "tooltipText": "Nothing to see here."
+        }
+      ]
+    }
+  ],
+  "Merchant": [
+    {
+      "title": "General Checks",
+      "checkboxes": [
+        {
+          "text": "Coming Soon, Insha'Allah!",
+          "tooltipText": "Nothing to see here."
+        }
+      ]
+    }
+  ],
+  "EMD": [
+    {
+      "title": "General Checks",
+      "checkboxes": [
+        {
+          "text": "Coming Soon, Insha'Allah!",
+          "tooltipText": "Nothing to see here."
+        }
+      ]
+    }
+  ],
+  "Name Correction/Change": [
+    {
+      "title": "General Checks",
+      "checkboxes": [
+        {
+          "text": "Coming Soon, Insha'Allah!",
+          "tooltipText": "Nothing to see here."
+        }
+      ]
+    }
+  ],
+  "Seats & Wheelchair": [
+    {
+      "title": "General Checks",
+      "checkboxes": [
+        {
+          "text": "Coming Soon, Insha'Allah!",
+          "tooltipText": "Nothing to see here."
+        }
       ]
     }
   ]
