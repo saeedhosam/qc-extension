@@ -12,17 +12,27 @@ function IndexSidebar() {
   const [tooltipText, setTooltipText] = useState("");
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
 
-  const handleMouseEnter = (text) => {
+  const handleTooltipClick = (text) => {
     setTooltipText(text);
     setIsTooltipVisible(true);
   };
-  const handleMouseLeave = () => {
-    setTooltipText("");
+
+  const handleCloseTooltip = () => {
     setIsTooltipVisible(false);
+    setTooltipText("");
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center" onClick={(e) => {
+      // If the tooltip is visible and the click is outside the tooltip-triggering elements, close it.
+      // This is a simple implementation. A more robust one would check classnames or data attributes.
+      if (isTooltipVisible) {
+        const target = e.target as HTMLElement;
+        if (!target.closest('[data-tooltip-trigger]')) {
+          handleCloseTooltip();
+        }
+      }
+    }}>
       <MainTabs activeTool={activeTool} setActiveTool={setActiveTool} />
       <div className="w-full">
         {activeTool === "QC" && (
@@ -33,8 +43,7 @@ function IndexSidebar() {
             />
             <QcChecklist
               activeCategory={activeCategory}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
+              onTooltipClick={handleTooltipClick}
             />
           </div>
         )}
@@ -51,7 +60,7 @@ function IndexSidebar() {
       </div>
 
       {isTooltipVisible && ( // <-- NEW: Conditionally render the backdrop
-        <div className="fixed inset-0 bg-black/50 z-40"></div>
+        <div className="fixed inset-0 bg-black/50 z-40" onClick={handleCloseTooltip}></div>
       )}
       
       <GlobalTooltip text={tooltipText} isVisible={isTooltipVisible} />

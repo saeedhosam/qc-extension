@@ -2,7 +2,7 @@ import { Checkbox } from "./checkbox-card";
 import { ExpandableCard } from "./expandable-card";
 import qcData from "~assets/qc-data.json";
 
-const QcChecklist = ({ activeCategory, onMouseEnter, onMouseLeave }) => { // <-- New props
+const QcChecklist = ({ activeCategory, onTooltipClick }) => { // <-- New props
   const cards = qcData[activeCategory] || [];
 
   return (
@@ -15,8 +15,7 @@ const QcChecklist = ({ activeCategory, onMouseEnter, onMouseLeave }) => { // <--
                 key={checkboxIndex}
                 text={checkbox.text}
                 tooltipText={checkbox.tooltipText}
-                onMouseEnter={onMouseEnter} // <-- Pass the prop down
-                onMouseLeave={onMouseLeave} // <-- Pass the prop down
+                onTooltipClick={onTooltipClick} // <-- Pass the prop down
               />
             ))}
           </ExpandableCard>
