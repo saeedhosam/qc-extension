@@ -1,5 +1,3 @@
-// src/components/MainTabs.tsx
-
 const MainTabs = ({ activeTool, setActiveTool }) => {
   const tools = ["QC", "Tasks", "Taxes"];
   

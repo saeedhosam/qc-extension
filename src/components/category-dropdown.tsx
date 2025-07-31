@@ -1,5 +1,3 @@
-// src/components/CategoryDropdown.tsx
-
 import { useState, useRef, useEffect } from "react";
 import qcData from "~assets/qc-data.json";
 

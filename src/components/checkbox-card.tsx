@@ -1,4 +1,4 @@
-export const Checkbox = ({ text, tooltipText }) => {
+export const Checkbox = ({ text, tooltipText, onMouseEnter, onMouseLeave }) => {
   return (
     <label
       className="flex w-full items-center my-2 px-4 py-2 text-sm rounded-lg transition-all border-none cursor-pointer
@@ -10,14 +10,15 @@ export const Checkbox = ({ text, tooltipText }) => {
         </span>
       </div>
 
-      <div className="relative group ml-auto">
+      <div
+        className="ml-auto"
+        onMouseEnter={() => onMouseEnter(tooltipText)} // <-- New event handler
+        onMouseLeave={onMouseLeave} // <-- New event handler
+      >
         <span className="cursor-pointer text-gray-400 hover:text-gray-600">
           ?
         </span>
-        <span className="fixed hidden group-hover:block top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 w-64 text-center text-sm text-white bg-gray-700 rounded-md shadow-lg z-50 pointer-events-none">
-          {tooltipText}
-        </span>
       </div>
     </label>
-  )
-}
+  );
+};
