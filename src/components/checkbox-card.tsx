@@ -14,15 +14,8 @@ export const Checkbox = ({ text, tooltipText }) => {
         <span className="cursor-pointer text-gray-400 hover:text-gray-600">
           ?
         </span>
-        <span className="absolute hidden group-hover:block bottom-full right-0 mb-2 p-2 w-48 text-center text-xs text-white bg-gray-700 rounded-md shadow-lg z-20">
+        <span className="fixed hidden group-hover:block top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 w-64 text-center text-sm text-white bg-gray-700 rounded-md shadow-lg z-50 pointer-events-none">
           {tooltipText}
-          <svg
-            className="absolute text-gray-700 h-2 w-full left-0 top-full"
-            x="0px"
-            y="0px"
-            viewBox="0 0 255 255">
-            <polygon className="fill-current" points="0,0 127.5,127.5 255,0" />
-          </svg>
         </span>
       </div>
     </label>

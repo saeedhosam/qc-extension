@@ -12,7 +12,7 @@
   ],
   "Issuance": [
     {
-      "title": "Pre-Ticketing Checks",
+      "title": "Office",
       "checkboxes": [
         {
           "text": "Office & Mondee PCC",
@@ -29,7 +29,7 @@
       ]
     },
     {
-      "title": "Flight & Fare Details",
+      "title": "Itinerary",
       "checkboxes": [
         {
           "text": "Flight Segments & Dates (especially for RJ)",
