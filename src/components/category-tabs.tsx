@@ -41,7 +41,7 @@ const CategoryTabs = ({
       <div className="relative" ref={dropdownRef}>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-full flex items-center justify-between bg-white border-2 border-gray-200 text-gray-800 py-3 px-4 rounded-xl leading-tight focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 shadow-md hover:shadow-lg hover:border-gray-300 transition-all duration-200 font-medium">
+          className="w-full flex items-center justify-between bg-white border-2 border-gray-200 text-gray-800 py-3 px-4 rounded-xl leading-tight shadow-md hover:shadow-lg hover:border-gray-300 transition-all duration-200 font-medium">
           <span className="truncate">{activeCategory}</span>
           <svg
             className={`h-5 w-5 transform transition-transform duration-200 ${
@@ -66,7 +66,7 @@ const CategoryTabs = ({
                 onClick={() => handleSelect(category)}
                 className={`w-full text-left px-4 py-3 hover:bg-gray-50 transition-colors duration-150 font-medium first:rounded-t-xl last:rounded-b-xl ${
                   category === activeCategory
-                    ? "bg-blue-50 text-blue-700 border-r-2 border-blue-500"
+                    ? "bg-blue-50 text-blue-700 border-l-2 border-blue-500"
                     : "text-gray-800"
                 }`}>
                 {category}
