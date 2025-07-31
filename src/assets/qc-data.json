@@ -1,0 +1,34 @@
+{
+  "Issuance": [
+    {
+      "title": "Issuance QC Checks",
+      "checkboxes": [
+        { "text": "Is the cube fully assembled?", "tooltipText": "Check for any missing pieces or stickers." },
+        { "text": "Are all colors correctly applied?", "tooltipText": "Verify that no two adjacent faces have the same color." }
+      ]
+    },
+    {
+      "title": "Packaging",
+      "checkboxes": [
+        { "text": "Is the box in good condition?", "tooltipText": "Look for dents, tears, or other damage." }
+      ]
+    }
+  ],
+  "Exchange": [
+    {
+      "title": "Exchange Return Checks",
+      "checkboxes": [
+        { "text": "Is the item in new condition?", "tooltipText": "Check for signs of use, scratches, or damage." },
+        { "text": "Is the original packaging included?", "tooltipText": "Ensure all parts and manuals are present." }
+      ]
+    }
+  ],
+  "Refund": [
+    {
+      "title": "Refund Inspection",
+      "checkboxes": [
+        { "text": "Are all accessories included?", "tooltipText": "Verify all components from the original purchase." }
+      ]
+    }
+  ]
+}
