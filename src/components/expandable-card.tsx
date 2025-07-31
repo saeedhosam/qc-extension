@@ -1,4 +1,5 @@
-import { useState, useRef } from "react"
+import { useRef, useState } from "react"
+
 import { Checkbox } from "./checkbox-card"
 
 export const ExpandableCard = ({ title, items, onTooltipClick }) => {
@@ -15,7 +16,6 @@ export const ExpandableCard = ({ title, items, onTooltipClick }) => {
     })
   }
 
-  // Determine badge styles based on progress
   let badgeClasses = "text-xs font-semibold px-2.5 py-0.5 rounded-full"
   if (checkedCount === items.length) {
     badgeClasses += " bg-green-100 text-green-800"
