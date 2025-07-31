@@ -4,6 +4,7 @@ import qcData from "~assets/qc-data.json";
 const CategoryDropdown = ({ activeCategory, setActiveCategory }) => {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
+  const listRef = useRef<HTMLUListElement>(null);
 
   // This useEffect handles closing the dropdown when clicking outside
   useEffect(() => {
@@ -27,9 +28,13 @@ const CategoryDropdown = ({ activeCategory, setActiveCategory }) => {
         {activeCategory || "Category"}
       </button>
       <ul
-        className={`bg-white rounded w-40 border transition-all mb-2 duration-300 overflow-hidden ${
-          isOpen ? "max-h-40 p-2" : "max-h-0 border-0 p-0"
-        }`}
+        ref={listRef}
+        className="bg-white rounded w-40 border border-gray-200 transition-all duration-300 ease-in-out overflow-hidden"
+        style={{
+          maxHeight: isOpen && listRef.current
+            ? `${listRef.current.scrollHeight}px`
+            : '0px',
+        }}
       >
         {Object.keys(qcData).map((category) => (
           <li
