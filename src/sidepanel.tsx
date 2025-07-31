@@ -1,8 +1,10 @@
 import { useState } from "react"
+
 import CategoryTabs from "~components/category-tabs"
 import GlobalTooltip from "~components/global-tooltip"
 import MainTabs from "~components/main-tabs"
 import QcChecklist from "~components/qc-checklist"
+
 import "~style.css"
 
 function IndexSidebar() {
@@ -54,9 +56,7 @@ function IndexSidebar() {
         {activeTool === "Taxes" && (
           <div className="p-6">
             <h2 className="text-xl font-semibold text-gray-800">Taxes</h2>
-            <p className="mt-2 text-gray-600">
-              Should be the next thing. 
-            </p>
+            <p className="mt-2 text-gray-600">Should be the next thing.</p>
           </div>
         )}
       </main>
