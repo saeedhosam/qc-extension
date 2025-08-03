@@ -1,6 +1,6 @@
 {
-  "name": "Open Website in Side Panel",
-  "description": "Opens a website in the side panel when clicked.",
+  "name": "Kilo Sugar",
+  "description": "A fully-fetched ticketing companion.",
   "version": "1.0",
   "manifest_version": 3,
   "permissions": ["sidePanel", "clipboardRead", "clipboardWrite"],
