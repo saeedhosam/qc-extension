@@ -3,7 +3,10 @@
   "description": "Opens a website in the side panel when clicked.",
   "version": "1.0",
   "manifest_version": 3,
-  "permissions": ["sidePanel"],
+  "permissions": ["sidePanel", "clipboardRead", "clipboardWrite"],
+  "host_permissions": [
+      "<all_urls>"
+  ],
   "background": {
     "service_worker": "background.js"
   },
