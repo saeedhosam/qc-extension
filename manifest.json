@@ -4,9 +4,13 @@
   "version": "1.0",
   "manifest_version": 3,
   "permissions": ["sidePanel", "clipboardRead", "clipboardWrite"],
-  "host_permissions": [
-      "<all_urls>"
-  ],
+  "host_permissions": ["<all_urls>"],
+  "icons": {
+    "16": "icon.png",
+    "32": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
   "background": {
     "service_worker": "background.js"
   },
