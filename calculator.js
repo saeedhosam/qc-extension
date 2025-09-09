@@ -1,6 +1,12 @@
 (function() {
   const display = document.getElementById('display')
+  const historyListEl = document.getElementById('historyList')
+  const clearHistoryBtn = document.getElementById('clearHistory')
+  const copyResultBtn = document.getElementById('copyResult')
+
   let expression = ''
+  let history = [] // [{ expr, res, time }]
+  let saveExprTimer = null
 
   const port = chrome.runtime.connect({ name: 'calculator_popup' })
   port.onMessage.addListener((msg) => {
@@ -9,12 +15,104 @@
     }
   })
 
+  function formatWithMinTwoDecimals(value) {
+    const n = typeof value === 'number' ? value : parseFloat(value)
+    if (!Number.isFinite(n)) return ''
+    let s = String(n)
+    if (s.includes('e') || s.includes('E')) {
+      s = n.toFixed(12)
+    }
+    if (!s.includes('.')) return s + '.00'
+    const parts = s.split('.')
+    let dec = parts[1]
+    while (dec.length > 2 && dec.endsWith('0')) dec = dec.slice(0, -1)
+    if (dec.length < 2) dec = dec.padEnd(2, '0')
+    return parts[0] + '.' + dec
+  }
+
+  function toTwoFixed(value) {
+    const n = typeof value === 'number' ? value : parseFloat(value)
+    if (!Number.isFinite(n)) return ''
+    return (Math.round(n * 100) / 100).toFixed(2)
+  }
+
+  async function loadHistory() {
+    try {
+      const { calc_history } = await chrome.storage.local.get('calc_history')
+      history = Array.isArray(calc_history) ? calc_history : []
+      renderHistory()
+    } catch (e) {
+      history = []
+    }
+  }
+
+  async function saveHistory() {
+    try {
+      await chrome.storage.local.set({ calc_history: history })
+    } catch (e) {}
+  }
+
+  async function loadExpression() {
+    try {
+      const { calc_expression } = await chrome.storage.local.get('calc_expression')
+      expression = typeof calc_expression === 'string' ? calc_expression : ''
+      updateDisplay(expression)
+    } catch (e) {
+      expression = ''
+      updateDisplay(expression)
+    }
+  }
+
+  function scheduleSaveExpression() {
+    if (saveExprTimer) clearTimeout(saveExprTimer)
+    saveExprTimer = setTimeout(() => {
+      chrome.storage.local.set({ calc_expression: expression }).catch(() => {})
+    }, 150)
+  }
+
+  function renderHistory() {
+    if (!historyListEl) return
+    historyListEl.innerHTML = ''
+    for (let i = history.length - 1; i >= 0; i--) {
+      const item = history[i]
+      const resDisplay = formatWithMinTwoDecimals(item.res) || ''
+      const div = document.createElement('div')
+      div.className = 'history-item'
+      div.innerHTML = `<div class="history-text"><div class=\"history-expr\">${escapeHtml(item.expr)}</div><div class=\"history-res\">${escapeHtml(resDisplay)}</div></div><button class=\"history-copy-btn\" title=\"Copy\">📋</button>`
+      div.querySelector('.history-copy-btn').addEventListener('click', async (ev) => {
+        ev.stopPropagation()
+        const btn = ev.currentTarget
+        const toCopy = toTwoFixed(item.res)
+        try {
+          await navigator.clipboard.writeText(toCopy)
+          const prev = btn.textContent
+          btn.textContent = '✅'
+          setTimeout(() => { btn.textContent = prev }, 1000)
+        } catch (e) {}
+      })
+      div.addEventListener('click', () => {
+        expression = String(resDisplay)
+        updateDisplay(expression)
+        scheduleSaveExpression()
+      })
+      historyListEl.appendChild(div)
+    }
+  }
+
+  function escapeHtml(s) {
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/\"/g, '&quot;')
+      .replace(/'/g, '&#039;')
+  }
+
   function updateDisplay(text) {
     display.textContent = text || '0'
   }
 
   function appendToken(token) {
-    // Prevent duplicate operators
     if ('+-*/%'.includes(token)) {
       if (expression.length === 0) return
       const last = expression[expression.length - 1]
@@ -27,34 +125,46 @@
       expression += token
     }
     updateDisplay(expression)
+    scheduleSaveExpression()
   }
 
   function clearAll() {
     expression = ''
     updateDisplay(expression)
+    scheduleSaveExpression()
   }
 
   function delChar() {
     expression = expression.slice(0, -1)
     updateDisplay(expression)
+    scheduleSaveExpression()
   }
 
   function evaluateExpression() {
     try {
       const result = evaluateSafely(expression)
-      expression = Number.isFinite(result) ? String(result) : ''
+      if (expression && Number.isFinite(result)) {
+        const formatted = formatWithMinTwoDecimals(result)
+        history.push({ expr: expression, res: formatted, time: Date.now() })
+        if (history.length > 500) history = history.slice(-500)
+        saveHistory()
+        renderHistory()
+        expression = formatted
+      } else {
+        expression = ''
+      }
       updateDisplay(expression)
+      scheduleSaveExpression()
     } catch (e) {
       updateDisplay('Error')
       expression = ''
+      scheduleSaveExpression()
     }
   }
 
-  // Simple safe evaluator using shunting-yard to RPN and compute
   function evaluateSafely(expr) {
     if (!expr || /[^0-9+\-*/%.]/.test(expr)) throw new Error('invalid')
 
-    // Tokenize: numbers and operators
     const tokens = []
     let num = ''
     for (let i = 0; i < expr.length; i++) {
@@ -104,11 +214,11 @@
 
     if (output.length !== 1) throw new Error('eval error')
     const out = output[0]
-    // Trim floating errors
     return Math.round(out * 1e12) / 1e12
   }
 
   function handleInput(key) {
+    if (key === 'q' || key === 'Q') return clearAll()
     if (key === 'Enter' || key === '=') return evaluateExpression()
     if (key === 'Escape' || key === 'C') return clearAll()
     if (key === 'Backspace' || key === 'DEL') return delChar()
@@ -118,7 +228,6 @@
   }
 
   document.addEventListener('keydown', (e) => {
-    // Allow in-page keyboard usage
     const map = {
       'Enter': 'Enter',
       'Escape': 'C',
@@ -134,5 +243,27 @@
     handleInput(btn.getAttribute('data-key'))
   })
 
-  updateDisplay('0')
+  if (clearHistoryBtn) {
+    clearHistoryBtn.addEventListener('click', async () => {
+      history = []
+      await saveHistory()
+      renderHistory()
+    })
+  }
+
+  if (copyResultBtn) {
+    copyResultBtn.addEventListener('click', async () => {
+      const text = display.textContent || '0'
+      const toCopy = toTwoFixed(text)
+      try {
+        await navigator.clipboard.writeText(toCopy)
+        const prev = copyResultBtn.textContent
+        copyResultBtn.textContent = '✅'
+        setTimeout(() => { copyResultBtn.textContent = prev }, 1000)
+      } catch (e) {}
+    })
+  }
+
+  loadHistory()
+  loadExpression()
 })()
